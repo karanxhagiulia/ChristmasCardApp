@@ -1,70 +1,95 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';  // Import useFonts to load custom fonts
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default function Index() {
+  // Correct path to the font file (relative to the root of the project)
+  const [fontsLoaded] = useFonts({
+    'Mountains-of-Christmas': require('../../assets/fonts/MountainsofChristmas-Regular.ttf'),  // Correct the relative path
+  });
 
-export default function HomeScreen() {
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;  // Show a loading message while the font is loading
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      {/* Gift Bag Icon */}
+      <Ionicons name="gift" size={180} color="#ff4c4c" style={styles.icon} />
+
+      {/* Main Title */}
+      <Text style={[styles.title, { fontFamily: 'Mountains-of-Christmas' }]}>
+        Santa is coming to town!
+      </Text>
+
+      {/* Subtitle */}
+      <Text style={styles.subtitle}>
+        Create Christmas Cards and send them to your loved ones!
+      </Text>
+
+      {/* Sign Up Button */}
+      <Link href="/signup" style={styles.buttonRed}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </Link>
+
+      {/* Log In Button */}
+      <Link href="/login" style={styles.buttonRed}>
+        <Text style={styles.buttonText}>Log In</Text>
+      </Link>
+
+      {/* Option to skip the onboarding */}
+      <Link href="/contacts" style={styles.skipText}>
+        Skip and Continue
+      </Link>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',  // White background for a clean, light feel
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    padding: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  icon: {
+    marginBottom: 40,  // Add some spacing below the icon
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#e60000',  // Christmas red for the title
+    marginBottom: 20,
+    textAlign: 'center',  // Center the title text
+  },
+  subtitle: {
+    fontSize: 18,
+    color: '#333',  // Dark grey for secondary text
+    marginBottom: 40,
+    textAlign: 'center',  // Center the subtitle text
+  },
+  buttonRed: {
+    backgroundColor: '#e60000',  // Red background
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginVertical: 10,
+    width: '80%',  // Make the button wide
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',  // White text inside the button
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',  // Center the button text
+  },
+  skipText: {
+    fontSize: 16,
+    color: '#e60000',  // Red text for Skip
+    marginTop: 20,
+    textDecorationLine: 'underline',
+    textAlign: 'center',  // Center the skip text
   },
 });
