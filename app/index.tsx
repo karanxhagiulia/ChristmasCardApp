@@ -90,3 +90,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',  
   },
 });
+// © 2024 Karanxha Giulia. All rights reserved.
