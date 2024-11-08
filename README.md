@@ -1,13 +1,27 @@
-# My Christmas App 🎅🎄
+# 🎅🎄 Christmas Card App 🎄📬
 
-Welcome to **My Christmas App**, a fun and festive application that allows users to create and send customized Christmas cards to their loved ones! (Non functional, Uni Project)
+A mobile app designed to spread holiday cheer by letting users create and send personalised Christmas cards to their contacts! Built with React Native, this app uses Expo and Firebase Authentication.
+
+## App Overview
+
+The **Christmas Card App** allows users to:
+- Connect with contacts within the app environment.
+- Design, create, and send holiday-themed Christmas cards.
+- Organise received and sent cards in an easy-to-navigate interface.
 
 ## Features
 
-- **Create Custom Christmas Cards**: Choose from a variety of festive designs and personalise your own Christmas cards.
-- **Send to Contacts**: Send cards directly to friends and family.
-- **Categorized Mail**: Easily organize and view sent and received cards with helpful categories.
-- **Holiday Themed Icons and Assets**: Get in the spirit with holiday-themed icons and artwork throughout the app!
+- **Customizable Cards**: Users can choose from various card templates or create a card from scratch.
+- **Firebase Integration**: Firebase Authentication for user management.
+- **Intuitive Navigation**: Tabs for easy access to "Create", "Contacts", "Your Mail", and "Settings".
+- **Basic Contact Management**: Connect with friends and family via email and send cards directly in the app.
+
+   
+## Screens and Routing
+The app uses a nested layout structure with expo-router for clean navigation:
+
+Root Layout (app/_layout.tsx): Handles the main stack navigation and initial route setup.
+Tab Layout (app/(tabs)/_layout.tsx): Contains the tab navigation screens, including "Create", "Contacts", "Your Mail", and "Settings".
 
 ## Learn more
 
@@ -20,4 +34,4 @@ To learn more about developing your project with Expo, look at the following res
 
 This software is provided for **personal use only**. Commercial use, redistribution, or modification for financial gain is **strictly prohibited** without express permission from the copyright holder.
 
-For inquiries about commercial licenses, please contact **karanxhagiulia@example.com**.
+For inquiries about commercial licenses, please contact **karanxhagiuliawork@gmail.com**.
