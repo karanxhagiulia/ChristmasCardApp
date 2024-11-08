@@ -1,5 +1,5 @@
 # 🎅🎄 Christmas Card App 🎄📬
-
+#### Quick University Project.
 A mobile app designed to spread holiday cheer by letting users create and send personalised Christmas cards to their contacts! Built with React Native, this app uses Expo and Firebase Authentication.
 
 ## App Overview
@@ -15,13 +15,19 @@ The **Christmas Card App** allows users to:
 - **Firebase Integration**: Firebase Authentication for user management.
 - **Intuitive Navigation**: Tabs for easy access to "Create", "Contacts", "Your Mail", and "Settings".
 - **Basic Contact Management**: Connect with friends and family via email and send cards directly in the app.
-
+  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f0ddf253-ec4b-480c-a1cb-484d2530257e" width="200">
+  <img src="https://github.com/user-attachments/assets/7b98bdcd-26f5-4afc-abd8-74f7a81c8a7c" width="200">
+  <img src="https://github.com/user-attachments/assets/dfefdd4b-670d-4a1e-a2c7-c97a130da417" width="200">
+  <img src="https://github.com/user-attachments/assets/b89ee4a3-6455-47c9-908d-bf37080827ea" width="200">
+</p>
    
 ## Screens and Routing
 The app uses a nested layout structure with expo-router for clean navigation:
 
-Root Layout (app/_layout.tsx): Handles the main stack navigation and initial route setup.
-Tab Layout (app/(tabs)/_layout.tsx): Contains the tab navigation screens, including "Create", "Contacts", "Your Mail", and "Settings".
+* Root Layout (app/_layout.tsx): Handles the main stack navigation and initial route setup.
+* Tab Layout (app/(tabs)/_layout.tsx): Contains the tab navigation screens, including "Create", "Contacts", "Your Mail", and "Settings".
 
 ## Learn more
 
