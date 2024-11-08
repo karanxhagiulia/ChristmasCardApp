@@ -1,8 +1,8 @@
-import { Button, StyleSheet, TextInput, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { router } from 'expo-router';  // For navigation
-import Ionicons from 'react-native-vector-icons/Ionicons';  // Christmas icon
+import { router } from 'expo-router';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function SignUp() {
   const [email, setEmail] = useState<string>('');
@@ -12,23 +12,32 @@ export default function SignUp() {
   const handleSignUp = () => {
     createUserWithEmailAndPassword(getAuth(), email, password)
       .then((userCredential) => {
-        // Redirect to the main tabs after successful sign-up
         if (userCredential.user) {
-          router.replace('/(tabs)');  // Navigating to the tabs after successful registration
+          console.log("User signed up successfully:", userCredential.user);
+          router.replace('/(tabs)/create');
         }
       })
       .catch((err) => {
-        // Handle the error (e.g., invalid email or weak password)
         setError(err?.message || 'An error occurred');
       });
   };
 
+  // Custom Back function to go to the index page
+  const handleBackToIndex = () => {
+    router.replace('/');  // Replace with the index page
+  };
+
   return (
     <View style={styles.container}>
+      {/* Custom Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={handleBackToIndex}>
+        <Ionicons name="arrow-back" size={24} color="#e60000" />
+        <Text style={styles.backText}>Back</Text>
+      </TouchableOpacity>
+
       {/* Christmas Icon */}
       <Ionicons name="gift" size={100} color="#e60000" style={styles.icon} />
 
-      {/* Title with Christmas font */}
       <Text style={[styles.title, { fontFamily: 'Mountains-of-Christmas' }]}>
         Sign Up for Christmas Fun!
       </Text>
@@ -59,7 +68,7 @@ export default function SignUp() {
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
 
-      {/* Back to Login Option */}
+      {/* Link to Log In Option */}
       <TouchableOpacity style={styles.linkButton} onPress={() => router.push('/login')}>
         <Text style={styles.linkText}>Already have an account? Log In</Text>
       </TouchableOpacity>
@@ -73,15 +82,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#fff',  // White background for a clean, light feel
+    backgroundColor: '#fff',
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,  // Adjust for status bar height if needed
+    left: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  backText: {
+    fontSize: 16,
+    color: '#e60000',
+    marginLeft: 8,
   },
   icon: {
-    marginBottom: 40,  // Add spacing below the icon
+    marginBottom: 40,
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#e60000',  // Christmas red for the title
+    color: '#e60000',
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -92,7 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f7f7',
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#e60000',  // Christmas red border
+    borderColor: '#e60000',
   },
   errorText: {
     color: 'red',
@@ -100,16 +121,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   buttonRed: {
-    backgroundColor: '#e60000',  // Red background for the button
+    backgroundColor: '#e60000',
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 8,
     marginVertical: 10,
-    width: '80%',  // Make the button wide
+    width: '80%',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',  // White text inside the button
+    color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -118,7 +139,7 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 16,
-    color: '#e60000',  // Red text for the link
+    color: '#e60000',
     textDecorationLine: 'underline',
   },
 });

@@ -6,11 +6,10 @@ import { router } from 'expo-router';  // For navigation
 export default function ContactsScreen() {
   // Sample contacts data
   const contacts = [
-    { id: 1, name: 'John', lastName: 'Doe', lastSeen: '2 hours ago' },
-    { id: 2, name: 'Jane', lastName: 'Smith', lastSeen: '1 day ago' },
+    { id: 1, name: 'Merry', lastName: 'Xmas', lastSeen: '2 hours ago' },
+    { id: 2, name: 'Festive', lastName: 'Raindeer', lastSeen: '1 day ago' },
     { id: 3, name: 'Santa', lastName: 'Claus', lastSeen: 'Just now' },
     { id: 4, name: 'Elf', lastName: 'Helper', lastSeen: '20 days ago' },
-
 ];
 
   return (
@@ -45,7 +44,7 @@ export default function ContactsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',  // White background for the clean look
+    backgroundColor: '#fff',  
     padding: 20,
   },
   header: {
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  contactItem: {
+  contactItem: { //each contact item css class
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f7f7f7',  // Light background for each contact

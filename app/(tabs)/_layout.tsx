@@ -5,52 +5,20 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#db190b',  // Yellowish tint for active tab
+        tabBarActiveTintColor: '#db190b',
         headerStyle: {
-          backgroundColor: '#fff',  // Light background for the header
+          backgroundColor: '#fff',
         },
-        headerShadowVisible: false,  // No shadow under the header
-        headerTintColor: '#e60000',  // Christmas red for header text color
+        headerShadowVisible: false,
+        headerTintColor: '#e60000',
         headerTitleStyle: {
-          fontWeight: 'bold',  // Bold header title
+          fontWeight: 'bold',
         },
         tabBarStyle: {
-          backgroundColor: '#fff',  // White background for the tab bar
+          backgroundColor: '#fff',
         },
       }}
     >
-      {/* Index Tab - Your Onboarding Screen */}
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? 'home-sharp' : 'home-outline'}
-              color={color}
-              size={24}
-            />
-          ),
-          headerShown: false,  // Hide the header on the index screen (onboarding screen)
-        }}
-      />
-
-      {/* Contacts Tab */}
-      <Tabs.Screen
-        name="contacts"
-        options={{
-          title: 'Contacts',  // This is the name of the tab
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? 'people' : 'people-outline'}
-              color={color}
-              size={24}
-            />
-          ),
-          headerShown: false,  // Hide the header title 
-        }}
-      />
-
       {/* Create Tab */}
       <Tabs.Screen
         name="create"
@@ -63,8 +31,23 @@ export default function TabLayout() {
               size={24}
             />
           ),
-          headerShown: false,  // Hide the header title 
+          headerShown: false, // Hide header for Create tab
+        }}
+      />
 
+      {/* Contacts Tab */}
+      <Tabs.Screen
+        name="contacts"
+        options={{
+          title: 'Contacts',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'people' : 'people-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+          headerShown: false, // Hide header for Contacts tab
         }}
       />
 
@@ -80,7 +63,7 @@ export default function TabLayout() {
               size={24}
             />
           ),
-          headerShown: false,  // Hide the header title 
+          headerShown: false, // Hide header for Mail tab
         }}
       />
 
@@ -96,8 +79,7 @@ export default function TabLayout() {
               size={24}
             />
           ),
-          headerShown: false,  // Hide the header title 
-
+          headerShown: false, // Hide header for Settings tab
         }}
       />
     </Tabs>

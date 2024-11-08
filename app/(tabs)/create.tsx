@@ -5,7 +5,7 @@ export default function CreateScreen() {
   const [selected, setSelected] = useState('template');  // Tracks if template or blank is selected
   const [cardSelected, setCardSelected] = useState(null);  // Tracks which card is selected
 
-  // Import images from assets folder (assuming you have many cards in the assets/Cards folder)
+  // Import images from assets folder
   const cardImages = [
     require('../../assets/Cards/card1.png'),
     require('../../assets/Cards/card2.png'),
@@ -16,15 +16,13 @@ export default function CreateScreen() {
     require('../../assets/Cards/card3.png'),
     require('../../assets/Cards/card4.png'),
     require('../../assets/Cards/card2.png'),
-    require('../../assets/Cards/card1.png'),
-
-    // Add more images as needed
+    require('../../assets/Cards/card1.png')
   ];
 
   return (
     <View style={styles.container}>
       {/* Title */}
-      <Text style={[styles.title, { fontFamily: 'Mountains-of-Christmas' }]}>Create</Text>
+      <Text style={[styles.header, { fontFamily: 'Mountains-of-Christmas' }]}>Create</Text>
 
       {/* Tab selection (Template or Blank) */}
       <View style={styles.tabContainer}>
@@ -71,12 +69,12 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'flex-start', // Align content to top
   },
-  title: {
-    fontSize: 40,
+  header: {
+    fontSize: 50,
     fontWeight: 'bold',
-    color: '#e60000', // Christmas red
+    color: '#e60000',  // Christmas red color for the title
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   tabContainer: {
     flexDirection: 'row',
@@ -115,12 +113,12 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   cardWrapper: {
-    width: 200, // Rectangular card width (longer than height)
-    height: 150, // Rectangular card height (shorter than width)
+    width: 200,
+    height: 150, 
     borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: '#e60000', // Border color for the card wrapper
+    borderColor: '#e60000', 
     marginBottom: 20,
   },
   cardImage: {
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   selectedCard: {
-    borderColor: '#ffd33d', // Gold color for selected card
-    borderWidth: 4, // Highlight selected card with a thicker border
+    borderColor: '#ffd33d',
+    borderWidth: 4, 
   },
 });

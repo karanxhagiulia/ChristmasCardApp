@@ -9,13 +9,13 @@ export default function LogIn() {
   const [password, setPassword] = useState<string>(''); // Password state
   const [error, setError] = useState<string>(''); // Error message state
 
-  // Handle login functionality
   const handleLogin = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (userCredential.user) {
-          router.replace('/(tabs)');  // Navigate to the main tabs after successful login
+          console.log("User logged in successfully:", userCredential.user);
+          router.replace('/(tabs)/create');
         }
       })
       .catch((err) => {
@@ -23,8 +23,19 @@ export default function LogIn() {
       });
   };
 
+  // Custom Back function to go to the index page
+  const handleBackToIndex = () => {
+    router.replace('/');  // Replace with the index page
+  };
+
   return (
     <View style={styles.container}>
+      {/* Custom Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={handleBackToIndex}>
+        <Ionicons name="arrow-back" size={24} color="#e60000" />
+        <Text style={styles.backText}>Back</Text>
+      </TouchableOpacity>
+
       {/* Christmas Icon */}
       <Ionicons name="gift" size={100} color="#e60000" style={styles.icon} />
 
@@ -79,6 +90,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     backgroundColor: '#fff',  // White background for a clean, light feel
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,  // Adjust for status bar height if needed
+    left: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  backText: {
+    fontSize: 16,
+    color: '#e60000',
+    marginLeft: 8,
   },
   icon: {
     marginBottom: 40,  // Add spacing below the icon

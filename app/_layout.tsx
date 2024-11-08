@@ -4,7 +4,6 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 
-import { User } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { initializeAuth } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
@@ -32,7 +31,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
+  initialRouteName: "index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -41,15 +40,16 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   return (
     <Stack>
-      {/* Include the tab layout */}
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ title: 'Welcome', headerShown: false }} />
       
-      {/* Other screens not in the tab bar */}
-      <Stack.Screen name="index" options={{ title: 'Home' }} />
-      <Stack.Screen name="signup" options={{ title: 'Sign Up' }} />
-      <Stack.Screen name="login" options={{ title: 'Login' }} />
-      <Stack.Screen name="about" options={{ title: 'About' }} />
+      {/* Hide header for login and signup screens */}
+      <Stack.Screen name="signup" options={{ headerShown: false }} />
+      <Stack.Screen name="login" options={{ headerShown: false }} />
 
+      {/* Other non-tab screens */}
+      <Stack.Screen name="form" options={{ title: 'Contact Us' }} />
+      
       {/* Not found screen */}
       <Stack.Screen name="+not-found" />
     </Stack>

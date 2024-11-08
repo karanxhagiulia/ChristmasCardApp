@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
-import { Ionicons } from 'react-native-vector-icons';  // Icon for decoration
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';  // Christmas icon used in the first try before updating with the Figma ones
 
 export default function ContactUsForm() {
   const [name, setName] = useState('');
@@ -25,7 +25,7 @@ export default function ContactUsForm() {
 
   return (
     <View style={styles.container}>
-      {/* Title */}
+      {/* Title with Christmas font */}
       <Text style={[styles.title, { fontFamily: 'Mountains-of-Christmas' }]}>Contact Us</Text>
 
       {/* Name input */}
@@ -56,10 +56,9 @@ export default function ContactUsForm() {
       />
 
       {/* Submit button */}
-      <Button title="Submit" onPress={handleSubmit} color="#e60000" />
-
-      {/* Additional icon for fun */}
-      <Ionicons name="mail" size={50} color="#e60000" style={styles.icon} />
+      <TouchableOpacity style={styles.buttonRed} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Send Message</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -67,32 +66,43 @@ export default function ContactUsForm() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',  // Bright, light background to create a clean look
-    padding: 20,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 16,
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#e60000',  // Red color to fit the Christmas theme
-    textAlign: 'center',
     marginBottom: 30,
+    textAlign: 'center',
   },
   input: {
-    backgroundColor: '#fff',
-    width: '100%',
+    width: '80%',
     padding: 12,
-    marginBottom: 15,
+    marginBottom: 16,
+    backgroundColor: 'white',
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#e60000',  // Red border for the inputs
+    borderColor: '#ccc', // Light grey border for input fields
   },
   textArea: {
     height: 100,
-    textAlignVertical: 'top',  // Ensures the text is aligned at the top of the TextInput
+    textAlignVertical: 'top',  // Align the text at the top of the TextInput
   },
-  icon: {
-    alignSelf: 'center',
-    marginTop: 30,
+  buttonRed: {
+    backgroundColor: '#e60000',  // Red background for the button
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginVertical: 10,
+    width: '80%',  // Make the button wide
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',  // White text inside the button
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
