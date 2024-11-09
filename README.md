@@ -38,6 +38,5 @@ To learn more about developing your project with Expo, look at the following res
 
 ### License and Usage
 
-This software is provided for **personal use only**. Commercial use, redistribution, or modification for financial gain is **strictly prohibited** without express permission from the copyright holder.
+This software is provided for **personal use only**. Commercial use, redistribution, or modification for financial gain is **strictly prohibited** without express permission from the copyright holders.
 
-For inquiries about commercial licenses, please contact **karanxhagiuliawork@gmail.com**.
